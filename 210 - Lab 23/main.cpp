@@ -71,21 +71,44 @@ int main_menu() {
 
 // Third Task: Add a goat to the list
 void add_goat(list<Goat> &trip, string names[], string colors[]) {
-    int rand_name = rand() % SZ_NAMES;
-    int rand_color = rand() % SZ_COLORS;
+    int rand_name_idx = rand() % SZ_NAMES;
+    int rand_color_idx = rand() % SZ_COLORS;
     int rand_age = rand() % MAX_AGE + 1;
     
-    Goat new_goat(names[rand_name_idx], rand_age, colors[rand_color_idc]);
-    cout << "Added: " << goat.description() << endl;
+    Goat new_goat(names[rand_name_idx], rand_age, colors[rand_color_idx]);
+    trip.push_back(new_goat); // add new goat to the trip
+    cout << "Added: " << new_goat.description() << endl;
     
 }
 
 // Third Task: Now we delete a goat from the list
 void delete_goat(list<goat> trip) {
-    if (trip.empty()) {
+    if (trip) {
         cout << "No goats can be deleted" << endl;
         return;
     }
+    
+    int index = select_goat(trip);
+    if (index == -1) {
+        cout << "Invalid Selection." << endl;
+        return;
+    }
+    
+    auto it = trip.begin();
+    advance(it,index);
+    cout << "Deleting: " << it->description() << endl;
+    trip.erase(it);
+}
+
+// Third Task: Display whole list of goats
+void display_trip(const list,Goat. &trip) {
+    if (trip.empty()) {
+        cout << "No goats in the trip" << endl;
+        return;
+    }
+    
+    int i = 1;
+    for (const auto &Goa
 }
 
 
