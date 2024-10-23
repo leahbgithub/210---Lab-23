@@ -16,9 +16,9 @@ public:
     // Constructor with name by itself
     Goat(string n) { name = n; age = 0; color = ""; }
     // Constructor with name AND age
-    Goat(int a) { name = n; age = 0; color = ""; }
+    Goat(string n, int a) { name = n; age = a; color = ""; }
     // Constructor with all of the parameters
-    Goat(string n, int a) { name =n; age = 0; color = c; }
+    Goat(string n, int a, string c) { name = n; age = a; color = c; }
     
 
     // setters and getters
@@ -30,11 +30,12 @@ public:
     string get_color() const        { return color; }
 
     //Overloaded < operator for the std::list
-    bool operator(const Goat &other) const {
+    bool operator<(const Goat &other) const {
         return this->age < other.age;
     }
+    // Helper function which will help with formatting output
     string description() const {
-        return name + to_string(age) + co
+        return name + " (" + to_string(age) + ", " + color + ")";
     }
 };
 
