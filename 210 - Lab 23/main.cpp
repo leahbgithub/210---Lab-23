@@ -37,7 +37,7 @@ int main() {
         int choice = main_menu();
         switch(choice) {
             case 1:
-                add_goat(trip,names,colors);
+                add_goat(trip, names, colors);
                 break;
             case 2:
                 delete_goat(trip);
@@ -49,7 +49,7 @@ int main() {
                 running = false;
                 break;
             default:
-                cout << "Invalid choice. Try again" << endl;
+                cout << "Invalid choice." << endl;
         }
     }
 
@@ -64,7 +64,7 @@ int main_menu() {
     cout << "[2] Delete a Goat" << endl;
     cout << "[3] List a Goat" << endl;
     cout << "[4] Quit" << endl;
-    cout << "Choice: ";
+    cout << "Choice--> ";
     cin >> choice;
     return choice;
 }
@@ -82,8 +82,8 @@ void add_goat(list<Goat> &trip, string names[], string colors[]) {
 }
 
 // Third Task: Now we delete a goat from the list
-void delete_goat(list<goat> trip) {
-    if (trip) {
+void delete_goat(list<Goat> &trip) {
+    if (trip.empty()) {
         cout << "No goats can be deleted" << endl;
         return;
     }
@@ -95,20 +95,39 @@ void delete_goat(list<goat> trip) {
     }
     
     auto it = trip.begin();
-    advance(it,index);
+    advance(it, index);
     cout << "Deleting: " << it->description() << endl;
     trip.erase(it);
 }
 
 // Third Task: Display whole list of goats
-void display_trip(const list,Goat. &trip) {
+void display_trip(const list<Goat> &trip) {
     if (trip.empty()) {
         cout << "No goats in the trip" << endl;
         return;
     }
     
     int i = 1;
-    for (const auto &Goa
+    for (const auto &goat : trip) {
+        cout << "[" << i++ << "] " << goat.description() << endl;
+    }
+}
+
+// Task three: Select goat from list
+int select_goat(list<Goat> trip) {
+    if (trip.empty()) return -1;
+    
+    int i = 1;
+    for (const auto &goat : trip) {
+        cout << "[" << i++ << "] " << goat.description() << endl;
+    }
+    
+    int choice;
+    cout << "Select a ghost by the number: ";
+    cin >> choice;
+    
+    if (choice < 1 || choice > trip.size()) return -1;
+    return choice - 1;
 }
 
 
