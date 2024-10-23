@@ -56,7 +56,7 @@ int main() {
     return 0;
 }
 
-// create main_menu()
+// Second Task: create main_menu()
 int main_menu() {
     int choice;
     cout << "\n*** GOAT MANAGER 3001 ***" << endl;
@@ -68,4 +68,24 @@ int main_menu() {
     cin >> choice;
     return choice;
 }
+
+// Third Task: Add a goat to the list
+void add_goat(list<Goat> &trip, string names[], string colors[]) {
+    int rand_name = rand() % SZ_NAMES;
+    int rand_color = rand() % SZ_COLORS;
+    int rand_age = rand() % MAX_AGE + 1;
+    
+    Goat new_goat(names[rand_name_idx], rand_age, colors[rand_color_idc]);
+    cout << "Added: " << goat.description() << endl;
+    
+}
+
+// Third Task: Now we delete a goat from the list
+void delete_goat(list<goat> trip) {
+    if (trip.empty()) {
+        cout << "No goats can be deleted" << endl;
+        return;
+    }
+}
+
 
