@@ -64,7 +64,7 @@ int main_menu() {
     cout << "[2] Delete a Goat" << endl;
     cout << "[3] List a Goat" << endl;
     cout << "[4] Quit" << endl;
-    cout << "Choice--> ";
+    cout << "Choice --> ";
     cin >> choice;
     return choice;
 }
@@ -109,7 +109,7 @@ void display_trip(const list<Goat> &trip) {
     
     int i = 1;
     for (const auto &goat : trip) {
-        cout << "[" << i++ << "] " << goat.description() << endl;
+        cout << "[" << i++ << "] " << goat.description() << "\n";
     }
 }
 
