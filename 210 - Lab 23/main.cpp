@@ -101,7 +101,7 @@ void delete_goat(list<Goat> &trip) {
 }
 
 // Third Task: Display whole list of goats
-void display_trip(const list<Goat> &trip) {
+void display_trip(list<Goat> &trip) {
     if (trip.empty()) {
         cout << "No goats in the trip" << endl;
         return;
