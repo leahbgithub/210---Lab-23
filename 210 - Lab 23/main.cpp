@@ -7,6 +7,7 @@ using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
 
+// function prototypes
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string names[], string colors[]);
@@ -32,7 +33,7 @@ int main() {
     list<Goat> trip; // Manager for Goat
     bool running = true;
     
-    // The main loop
+    // The main loop for each function to be served as choices
     while (running) {
         int choice = main_menu();
         switch(choice) {
@@ -74,7 +75,8 @@ void add_goat(list<Goat> &trip, string names[], string colors[]) {
     int rand_name_idx = rand() % SZ_NAMES;
     int rand_color_idx = rand() % SZ_COLORS;
     int rand_age = rand() % MAX_AGE + 1;
-    
+
+    // create goat object with random values
     Goat new_goat(names[rand_name_idx], rand_age, colors[rand_color_idx]);
     trip.push_back(new_goat); // add new goat to the trip
     cout << "Added: " << new_goat.description() << endl;
@@ -87,13 +89,15 @@ void delete_goat(list<Goat> &trip) {
         cout << "No goats can be deleted" << endl;
         return;
     }
-    
+
+    // asks user to select a goat to delete
     int index = select_goat(trip);
     if (index == -1) {
         cout << "Invalid Selection." << endl;
         return;
     }
-    
+
+    // finds iterator for the selected goat in the list
     auto it = trip.begin();
     advance(it, index);
     cout << "Deleting: " << it->description() << endl;
@@ -106,7 +110,8 @@ void display_trip(list<Goat> &trip) {
         cout << "No goats in the trip" << endl;
         return;
     }
-    
+
+    // displays each goat in set as well as the position
     int i = 1;
     for (const auto &goat : trip) {
         cout << "[" << i++ << "] " << goat.description() << "\n";
@@ -116,7 +121,8 @@ void display_trip(list<Goat> &trip) {
 // Task three: Select goat from list
 int select_goat(list<Goat> trip) {
     if (trip.empty()) return -1;
-    
+
+    // displays goats in set with the number that corresponds
     int i = 1;
     for (const auto &goat : trip) {
         cout << "[" << i++ << "] " << goat.description() << endl;
@@ -124,8 +130,9 @@ int select_goat(list<Goat> trip) {
     
     int choice;
     cout << "Select a ghost by the number: ";
-    cin >> choice;
-    
+    cin >> choice; // will get user choice for which goat to select
+
+    // validates choice to see if in range
     if (choice < 1 || choice > trip.size()) return -1;
     return choice - 1;
 }
